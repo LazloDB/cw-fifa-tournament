@@ -1,0 +1,17 @@
+.person {
+  display: flex;
+}
+
+.remove {
+  color: #d33131;
+}
+
+.players {
+  min-height: 300px;
+  max-height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

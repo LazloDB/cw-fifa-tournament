@@ -1,0 +1,5 @@
+<div class="container">
+  <div [ngClass]="stage >= 0 ? 'finished' : ''" (click)="handleEmit(0)"></div>
+  <div [ngClass]="stage >= 1 ? 'finished' : ''" (click)="handleEmit(1)"></div>
+  <div [ngClass]="stage >= 2 ? 'finished' : ''" (click)="handleEmit(2)"></div>
+</div>

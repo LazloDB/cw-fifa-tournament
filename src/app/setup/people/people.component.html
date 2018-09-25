@@ -1,0 +1,9 @@
+<div class="box-container">
+  <div class="players">
+    <div *ngFor="let person of people" class="person">{{person}} <div class="remove" (click)="remove(person)">X</div></div>
+  </div>
+  <div class="inputs">
+    <input type="text" [(ngModel)]="playerName">
+    <input type="button" value="add" (click)="addPerson()">
+  </div>
+</div>

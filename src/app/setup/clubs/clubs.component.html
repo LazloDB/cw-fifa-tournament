@@ -1,0 +1,13 @@
+<div class="buttons">
+  <div (click)="addTopTeams()">Top Teams</div>
+</div>
+
+<div class="box-container">
+  <div class="players">
+    <div *ngFor="let club of clubs" class="person">{{club}} <div class="remove" (click)="remove(club)">X</div></div>
+  </div>
+  <div class="inputs">
+    <input type="text" [(ngModel)]="clubName">
+    <input type="button" value="add" (click)="addClub()">
+  </div>
+</div>

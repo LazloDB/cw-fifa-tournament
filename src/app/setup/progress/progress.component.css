@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  margin-top: 10px;
+}
+
+.container > div {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #c2c2c2;
+}
+
+.finished {
+  background-color: #5db7eb !important;
+}

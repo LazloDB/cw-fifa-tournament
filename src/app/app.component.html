@@ -1,0 +1,6 @@
+<div class="container">
+  <app-setup [stage]="stage" (setType)="setType($event)" *ngIf="!isSetup; else tournament"></app-setup>
+  <ng-template #tournament>
+    <app-tournament [poules]="poules"></app-tournament>
+  </ng-template>
+</div>

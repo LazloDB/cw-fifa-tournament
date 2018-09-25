@@ -1,0 +1,35 @@
+.person {
+  display: flex;
+}
+
+.remove {
+  color: #d33131;
+}
+
+.players {
+  min-height: 300px;
+  max-height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  position: absolute;
+  min-width: 500px;
+  top: -75px;
+}
+
+.buttons > div {
+  padding: 10px;
+  min-width: 100px;
+  text-align: center;
+  border: 1px solid #517bca;
+  background-color: #517bca;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
