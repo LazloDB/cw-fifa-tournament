@@ -1,3 +1,1 @@
-# Calendar
-
-A calendar that displays my friend's free days.
+# Fifa tournament generator (in progress)
