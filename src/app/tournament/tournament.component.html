@@ -1,1 +1,8 @@
-<app-standings [poules]="poules"></app-standings>
+<app-tabs>
+    <app-tab tabTitle="Games">
+        <app-games [poules]="poules"></app-games>
+    </app-tab>
+    <app-tab tabTitle="Standings">
+        <app-standings [poules]="poules"></app-standings>
+    </app-tab>
+</app-tabs>

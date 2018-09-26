@@ -1,0 +1,7 @@
+div {
+  border: .5px solid #dbdbdb;
+  max-width: 800px;
+  padding: 10px;
+  min-width: 500px;
+  border-radius: 0 5px 5px 5px;
+}
