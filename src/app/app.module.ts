@@ -23,6 +23,8 @@ import { StandingsComponent } from './tournament/standings/standings.component';
 // services
 import { DeviceService } from './services/device.service';
 import { GamesComponent } from './tournament/games/games.component';
+import { Tabs } from './common/tabs/tabs.component';
+import { Tab } from './common/tabs/tab/tab.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,6 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TournamentComponent,
     StandingsComponent,
     GamesComponent,
+    Tabs,
+    Tab
   ],
   imports: [
     BrowserModule,
