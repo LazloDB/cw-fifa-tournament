@@ -1,12 +1,24 @@
 <table *ngFor="let players of poules">
   <tr>
     <th>Name</th>
-    <th>wins</th>
-    <th>points</th>
+    <th>Played</th>
+    <th>Won</th>
+    <th>Drawn</th>
+    <th>Lost</th>
+    <th>GF</th>
+    <th>GA</th>
+    <th>GD</th>
+    <th>Points</th>
   </tr>
   <tr *ngFor="let player of players">
     <td>{{player.name}}</td>
+    <td>{{player.played}}</td>
     <td>{{player.wins}}</td>
+    <td>{{player.draws}}</td>
+    <td>{{player.losses}}</td>
+    <td>{{player.goals}}</td>
+    <td>{{player.goals_against}}</td>
+    <td>{{player.goals - player.goals_against}}</td>
     <td>{{player.points}}</td>
   </tr>
 </table>

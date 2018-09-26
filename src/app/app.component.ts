@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from './common/reducers';
+import { player } from './common/models/player';
 
 @Component({
   selector: 'app-root',
@@ -60,7 +61,7 @@ export class AppComponent implements OnInit {
     console.log(this.poules);
   }
 
-  createPlayer(playerName: Array<string> | string): any {
+  createPlayer(playerName: Array<string> | string): player {
     return {
       name: typeof playerName == 'string' ? playerName : playerName[0],
       points: 0,
