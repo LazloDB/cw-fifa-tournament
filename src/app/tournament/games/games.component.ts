@@ -14,11 +14,28 @@ export class GamesComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.createScheme(this.poules);
+    this.matches = this.createScheme(this.poules);
   }
 
   createScheme(poules) {
+    let tempPoules = {};
 
+    poules.forEach((poule, index) => {
+      tempPoules['poule' + index] = this.createMatches(poule);
+    });
+
+    return tempPoules;
+  }
+
+  createMatches(poule) {
+    const result = [];
+    for (let i = 0; i < poule.length; i++) {
+      for (let j = i + 1; j < poule.length; j++) {
+        result.push([poule[i].name, poule[j].name]);
+      }
+    }
+
+    return result;
   }
 
 }
