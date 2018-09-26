@@ -1,0 +1,12 @@
+<table *ngFor="let players of poules">
+  <tr>
+    <th>Name</th>
+    <th>wins</th>
+    <th>points</th>
+  </tr>
+  <tr *ngFor="let player of players">
+    <td>{{player.name}}</td>
+    <td>{{player.wins}}</td>
+    <td>{{player.points}}</td>
+  </tr>
+</table>

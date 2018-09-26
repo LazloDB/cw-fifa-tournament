@@ -17,10 +17,13 @@ import { PeopleComponent } from './setup/people/people.component';
 import { ProgressComponent } from './setup/progress/progress.component';
 import { ClubsComponent } from './setup/clubs/clubs.component';
 import { MatchTypeComponent } from './setup/match-type/match-type.component';
+import { TournamentComponent } from './tournament/tournament.component';
+import { StandingsComponent } from './tournament/standings/standings.component';
 
 // services
 import { DeviceService } from './services/device.service';
-import { TournamentComponent } from './tournament/tournament.component';
+import { GamesComponent } from './tournament/games/games.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,6 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ClubsComponent,
     MatchTypeComponent,
     TournamentComponent,
+    StandingsComponent,
+    GamesComponent,
   ],
   imports: [
     BrowserModule,
