@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { player } from "../../common/models/player";
 
 @Component({
   selector: 'app-games',
@@ -18,10 +17,10 @@ export class GamesComponent implements OnInit {
   }
 
   createScheme(poules) {
-    let tempPoules = {};
+    let tempPoules = [];
 
     poules.forEach((poule, index) => {
-      tempPoules['poule' + index] = this.createMatches(poule);
+      tempPoules = tempPoules.concat(this.createMatches(poule));
     });
 
     return tempPoules;

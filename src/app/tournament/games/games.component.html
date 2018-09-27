@@ -1,1 +1,5 @@
-<p>Games works.</p>
+<div>
+  <!-- <div *ngFor="let match of matches"> -->
+    <app-game *ngFor="let team of matches" [team]="team"></app-game>
+  <!-- </div> -->
+</div>

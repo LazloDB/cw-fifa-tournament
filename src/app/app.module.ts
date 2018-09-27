@@ -25,6 +25,7 @@ import { DeviceService } from './services/device.service';
 import { GamesComponent } from './tournament/games/games.component';
 import { Tabs } from './common/tabs/tabs.component';
 import { Tab } from './common/tabs/tab/tab.component';
+import { GameComponent } from './tournament/games/game/game.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TournamentComponent,
     StandingsComponent,
     GamesComponent,
+    GameComponent,
     Tabs,
     Tab
   ],
