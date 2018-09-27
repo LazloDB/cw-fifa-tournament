@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
     this.store.select('players').subscribe((v) => {
       this.players = v.players;
     });
+
+    this.store.select('poules').subscribe((v) => {
+      this.poules = v.poules;
+    });
   }
 
 
@@ -37,7 +41,7 @@ export class AppComponent implements OnInit {
 
     if (players.length < 6) {
       players = players.sort(() => { return 0.5 - Math.random() });
-      this.poules = [players.map((v) => this.createPlayer(v))];
+      this.store.dispatch({ type: 'ADD_POULES', payload: [players.map((v) => this.createPlayer(v))] });
     } else if (players.length >= 6 && players.length < 10) {
       let pouleA = [];
       let pouleB = [];
@@ -51,14 +55,11 @@ export class AppComponent implements OnInit {
 
         // push random player into poule
         players.length % 2 == 0 ? pouleA.push(this.createPlayer(players.splice(index, 1))) : pouleB.push(this.createPlayer(players.splice(index, 1)));
-
       }
 
-      this.poules.push(pouleA);
-      this.poules.push(pouleB);
+      this.store.dispatch({ type: 'ADD_POULES', payload: [pouleA] });
+      this.store.dispatch({ type: 'ADD_POULES', payload: [pouleB] });
     }
-
-    console.log(this.poules);
   }
 
   createPlayer(playerName: Array<string> | string): player {

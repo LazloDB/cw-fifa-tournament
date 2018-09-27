@@ -1,5 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { isNumber } from "util";
+import { Store } from "@ngrx/store";
+import { State } from "../../../common/reducers";
 
 @Component({
   selector: 'app-game',
@@ -14,11 +16,12 @@ export class GameComponent {
 
   isDisabled: boolean = false;
 
-  constructor() {}
+  constructor(private store: Store<State>) {}
 
   lockScore() {
     if (parseInt(this.homeScore) > -1 && parseInt(this.awayScore) > -1) {
       this.isDisabled = true;
+      this.store.dispatch({ type: 'ADD_POULE_INFO', payload: '' });
     }
   }
 

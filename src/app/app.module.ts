@@ -53,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {
       initialState: {
-        players: {players: []}
+        players: {players: []},
+        poules: {poules: []},
       }
     }),
     HttpClientModule,
