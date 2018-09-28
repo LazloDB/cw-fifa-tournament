@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     });
 
     this.store.select('poules').subscribe((v) => {
+      console.log(v.poules);
       this.poules = v.poules;
     });
   }

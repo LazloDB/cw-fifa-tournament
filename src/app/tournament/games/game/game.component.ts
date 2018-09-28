@@ -21,8 +21,27 @@ export class GameComponent {
   lockScore() {
     if (parseInt(this.homeScore) > -1 && parseInt(this.awayScore) > -1) {
       this.isDisabled = true;
-      this.store.dispatch({ type: 'ADD_POULE_INFO', payload: '' });
+      this.setPoints(this.homeScore, this.awayScore);
     }
+  }
+
+  setPoints(homeScore, awayScore) {
+    let winner;
+    let loser;
+
+    if (homeScore > awayScore) {
+      winner = this.team[0];
+      loser = this.team[1];
+    } else if (homeScore < awayScore) {
+      winner = this.team[1];
+      loser = this.team[0];
+    } else {
+      winner = null;
+      loser = null;
+    }
+
+    this.store.dispatch({ type: 'ADD_POULE_DATA', payload: {name: winner, won: true, draw: false} });
+
   }
 
 }
