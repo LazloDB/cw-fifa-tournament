@@ -1,7 +1,7 @@
 <div class="game-wrapper">
-  <div>{{team[0]}}</div>
+  <div>{{team[0].name}} | {{team[0].club}}</div>
   <div>
     <input type="text" [(ngModel)]="homeScore" (ngModelChange)="lockScore()" [disabled]="isDisabled" placeholder="0"> - <input type="text" [(ngModel)]="awayScore" (ngModelChange)="lockScore()" [disabled]="isDisabled" placeholder="0">
   </div>
-  <div>{{team[1]}}</div>
+  <div>{{team[1].club}} | {{team[1].name}}</div>
 </div>

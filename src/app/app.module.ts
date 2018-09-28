@@ -26,6 +26,7 @@ import { GamesComponent } from './tournament/games/games.component';
 import { Tabs } from './common/tabs/tabs.component';
 import { Tab } from './common/tabs/tab/tab.component';
 import { GameComponent } from './tournament/games/game/game.component';
+import { NgPipesModule } from 'ngx-pipes';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,9 +56,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       initialState: {
         players: {players: []},
         poules: {poules: []},
+        clubs: {clubs: []},
       }
     }),
     HttpClientModule,
+    NgPipesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

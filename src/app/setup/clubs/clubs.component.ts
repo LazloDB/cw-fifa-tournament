@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from '../../common/reducers';
 
 @Component({
   selector: 'app-clubs',
@@ -10,25 +12,31 @@ export class ClubsComponent implements OnInit {
   clubName: string = "";
 
 
-  constructor() { }
+  constructor(private store: Store<State>) {
+    this.store.select('clubs').subscribe((v) => {
+      this.clubs = v.clubs;
+    });
+  }
 
   ngOnInit() {
   }
 
   addClub(): void {
     if (this.clubs.indexOf(this.clubName) < 0 && this.clubName.trim() !== '') {
-      this.clubs.push(this.clubName);
+      this.store.dispatch({ type: 'ADD_CLUB', payload: this.clubName });
     }
 
     this.clubName = '';
   }
 
-  remove(person: string): void {
-    this.clubs = this.clubs.filter((v) => v !== person);
+  remove(club: string): void {
+    this.store.dispatch({ type: 'REMOVE_CLUB', payload: club });
   }
 
   addTopTeams() {
-    this.clubs = ['Arsenal', 'Atletico Madrid', 'Barcelona', 'Bayern München', 'Chelsea', 'Juventus', 'Liverpool', 'Manchester City', 'Manchester United', 'PSG'];
+    const topTeams = ['Arsenal', 'Atletico Madrid', 'Barcelona', 'Bayern München', 'Chelsea', 'Juventus', 'Liverpool', 'Manchester City', 'Manchester United', 'PSG'];
+
+    this.store.dispatch({ type: 'SET_CLUBS', payload: topTeams });
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from './common/reducers';
 import { player } from './common/models/player';
@@ -8,7 +8,7 @@ import { player } from './common/models/player';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   stage: number = 0;
   poules: Array<any> = [];
   isSetup: boolean = false;
@@ -20,13 +20,8 @@ export class AppComponent implements OnInit {
     });
 
     this.store.select('poules').subscribe((v) => {
-      console.log(v.poules);
       this.poules = v.poules;
     });
-  }
-
-
-  ngOnInit() {
   }
 
   setType(type: string) {
@@ -37,7 +32,7 @@ export class AppComponent implements OnInit {
     this.isSetup = true;
   }
 
-  createPoules(players: Array<string>) {
+  createPoules(players: Array<string>): void {
     const playerCount = players.length;
 
     if (players.length < 6) {
@@ -70,6 +65,7 @@ export class AppComponent implements OnInit {
       played: 0,
       goals: 0,
       goals_against: 0,
+      goal_difference: 0,
       wins: 0,
       draws: 0,
       losses: 0,

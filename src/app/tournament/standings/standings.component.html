@@ -10,7 +10,7 @@
     <th>GD</th>
     <th>Points</th>
   </tr>
-  <tr *ngFor="let player of players">
+  <tr *ngFor="let player of players | orderBy : ['-points', '-goal_difference']">
     <td>{{player.name}}</td>
     <td>{{player.played}}</td>
     <td>{{player.wins}}</td>
@@ -18,7 +18,7 @@
     <td>{{player.losses}}</td>
     <td>{{player.goals}}</td>
     <td>{{player.goals_against}}</td>
-    <td>{{player.goals - player.goals_against}}</td>
+    <td>{{player.goals_difference}}</td>
     <td>{{player.points}}</td>
   </tr>
 </table>

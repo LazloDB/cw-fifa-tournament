@@ -8,15 +8,33 @@ export function poules(state: any, action: Action) {
               ...state,
               poules: [...state.poules, ...action.payload]
             }
-        case 'ADD_POULE_DATA':
+        case 'ADD_POULE_WIN':
             return {
               ...state,
               poules: state.poules.map(
                 (poule) => poule.map(
-                  (v: player) => v.name === action.payload.name ? {...v, points: action.payload.won ? v.points + 3 : v.points, played: v.played + 1} : v
+                  (v: player) => v.name === action.payload.name ? {...v, points: v.points + 3, played: v.played + 1, wins: v.wins + 1, goals: v.goals + action.payload.goals, goals_against: v.goals_against + action.payload.goals_against, goal_difference: v.goals - v.goals_against} : v
                 )
               )
             }
+        case 'ADD_POULE_LOSS':
+            return {
+              ...state,
+              poules: state.poules.map(
+                (poule) => poule.map(
+                  (v: player) => v.name === action.payload.name ? {...v, played: v.played + 1, losses: v.losses + 1, goals: v.goals + action.payload.goals, goals_against: v.goals_against + action.payload.goals_against, goal_difference: v.goals - v.goals_against} : v
+                )
+              )
+            }
+        case 'ADD_POULE_DRAW':
+          return {
+            ...state,
+            poules: state.poules.map(
+              (poule) => poule.map(
+                (v: player) => v.name === action.payload.name ? {...v, points: v.points + 1, played: v.played + 1, draws: v.draws + 1, goals: v.goals + action.payload.goals, goals_against: v.goals_against + action.payload.goals, goal_difference: v.goals - v.goals_against} : v
+              )
+            )
+          }
         default:
             return state;
     }

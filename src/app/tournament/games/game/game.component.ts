@@ -1,5 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { isNumber } from "util";
 import { Store } from "@ngrx/store";
 import { State } from "../../../common/reducers";
 
@@ -16,7 +15,8 @@ export class GameComponent {
 
   isDisabled: boolean = false;
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) {
+  }
 
   lockScore() {
     if (parseInt(this.homeScore) > -1 && parseInt(this.awayScore) > -1) {
@@ -28,20 +28,31 @@ export class GameComponent {
   setPoints(homeScore, awayScore) {
     let winner;
     let loser;
+    let goals;
+    let goals_against;
 
     if (homeScore > awayScore) {
-      winner = this.team[0];
-      loser = this.team[1];
+      winner = this.team[0].name;
+      loser = this.team[1].name;
+      goals = homeScore;
+      goals_against = awayScore;
     } else if (homeScore < awayScore) {
-      winner = this.team[1];
-      loser = this.team[0];
+      winner = this.team[1].name;
+      loser = this.team[0].name;
+      goals = awayScore;
+      goals_against = homeScore;
     } else {
       winner = null;
       loser = null;
     }
 
-    this.store.dispatch({ type: 'ADD_POULE_DATA', payload: {name: winner, won: true, draw: false} });
-
+    if (!winner && !loser) {
+      this.store.dispatch({ type: 'ADD_POULE_DRAW', payload: {name: this.team[0].name, goals: homeScore} });
+      this.store.dispatch({ type: 'ADD_POULE_DRAW', payload: {name: this.team[1].name, goals: homeScore} });
+    } else {
+      this.store.dispatch({ type: 'ADD_POULE_WIN', payload: {name: winner, goals: goals, goals_against: goals_against} });
+      this.store.dispatch({ type: 'ADD_POULE_LOSS', payload: {name: loser, goals: goals, goals_against: goals_against} });
+    }
   }
 
 }
