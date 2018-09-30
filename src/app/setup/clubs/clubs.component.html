@@ -5,7 +5,7 @@
 
 <div class="box-container">
   <div class="players">
-    <div *ngFor="let club of clubs" class="person">{{club}} <div class="remove" (click)="remove(club)">X</div></div>
+    <div *ngFor="let club of clubs" class="person">{{club}} <i class="fas fa-times" (click)="remove(club)"></i></div>
   </div>
   <div class="inputs">
     <input type="text" [(ngModel)]="clubName">

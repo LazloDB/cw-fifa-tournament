@@ -4,6 +4,7 @@ div {
   padding: 10px;
   min-width: 500px;
   border-radius: 0 0px 5px 5px;
+  background-color: white;
 }
 
 /* div::before {
