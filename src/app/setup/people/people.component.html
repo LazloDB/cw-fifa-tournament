@@ -1,6 +1,6 @@
 <div class="box-container">
   <div class="players">
-    <div *ngFor="let person of people" class="person">{{person}} <div class="remove" (click)="remove(person)">X</div></div>
+    <div *ngFor="let person of people" class="person">{{person}} <i class="fas fa-times" (click)="remove(person)"></i></div>
   </div>
   <div class="inputs">
     <input type="text" [(ngModel)]="playerName">

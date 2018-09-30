@@ -1,8 +1,11 @@
 .person {
   display: flex;
+  padding: 5px;
 }
 
-.remove {
+.fas {
+  margin-top: 2px;
+  margin-left: 5px;
   color: #d33131;
 }
 

@@ -39,4 +39,10 @@ export class ClubsComponent implements OnInit {
     this.store.dispatch({ type: 'SET_CLUBS', payload: topTeams });
   }
 
+  addNationalTeams() {
+    const nationalTeams = ['Argentina', 'Australia', 'Austria', 'Belgium', 'Brazil', 'Chile', 'China', 'Colombia', 'Denmark', 'England', 'France', 'Germany', 'Netherlands', 'Italy', 'Japan', 'Korea', 'Mexico', 'Norway', 'Poland', 'Portugal', 'Rep. Ireland', 'Saudi Arabia', 'Scotland', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'USA / Canada'];
+
+    this.store.dispatch({ type: 'SET_CLUBS', payload: nationalTeams });
+  }
+
 }

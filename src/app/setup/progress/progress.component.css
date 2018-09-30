@@ -3,14 +3,18 @@ div {
   margin-top: 10px;
 }
 
+.container {
+  justify-content: center;
+}
+
 .container > div {
   height: 8px;
   width: 8px;
   border-radius: 50%;
   margin: 0 5px;
-  background-color: #c2c2c2;
+  background-color: #ffffff;
 }
 
 .finished {
-  background-color: #5db7eb !important;
+  background-color: #fffb00 !important;
 }

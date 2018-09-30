@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+  height: 100vh;
+  background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
+}
 
 .box-container {
-  border: 1px solid #000000;
   border-radius: 5px;
   padding: 10px;
   min-width: 400px;
@@ -10,4 +14,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  box-shadow: 0 4px 10px 4px #13232f13;
+  border: 1px solid #e4e4e4;
+}
+
+div {
+  font-family: 'Raleway', sans-serif;
 }
