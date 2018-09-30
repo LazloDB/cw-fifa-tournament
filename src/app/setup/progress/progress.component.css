@@ -16,5 +16,6 @@ div {
 }
 
 .finished {
-  background-color: #fffb00 !important;
+  background-color: #3599be !important;
+  box-shadow: 0 4px 10px 4px #13232f13;
 }

@@ -19,6 +19,34 @@ body {
   border: 1px solid #e4e4e4;
 }
 
-div {
+div, input {
   font-family: 'Raleway', sans-serif;
+}
+
+input[type=text] {
+  border: 1px solid rgb(201, 201, 201);
+  padding: 0.5em 0.25em;
+  border-radius: 0.2em 0 0 0.2em;
+  font-size: 1em;
+  text-align: center;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+.inputs input[type=button] {
+  height: 37px;
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  border: 1px solid #517bca;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 0 0.2em 0.2em 0;
+}
+
+.inputs input[type=button]:hover {
+  background-color: #517bca;
+  color: white;
 }
