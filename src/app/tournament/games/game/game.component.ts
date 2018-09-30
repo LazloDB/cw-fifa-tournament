@@ -21,37 +21,20 @@ export class GameComponent {
   lockScore() {
     if (parseInt(this.homeScore) > -1 && parseInt(this.awayScore) > -1) {
       this.isDisabled = true;
-      this.setPoints(this.homeScore, this.awayScore);
+      this.setPoints(parseInt(this.homeScore), parseInt(this.awayScore));
     }
   }
 
   setPoints(homeScore, awayScore) {
-    let winner;
-    let loser;
-    let goals;
-    let goals_against;
+    let playerOne = {win: homeScore > awayScore, goals: homeScore, goals_against: awayScore};
+    let playerTwo = {win: awayScore > homeScore, goals: awayScore, goals_against: homeScore};
 
-    if (homeScore > awayScore) {
-      winner = this.team[0].name;
-      loser = this.team[1].name;
-      goals = homeScore;
-      goals_against = awayScore;
-    } else if (homeScore < awayScore) {
-      winner = this.team[1].name;
-      loser = this.team[0].name;
-      goals = awayScore;
-      goals_against = homeScore;
-    } else {
-      winner = null;
-      loser = null;
-    }
-
-    if (!winner && !loser) {
+    if (homeScore === awayScore) {
       this.store.dispatch({ type: 'ADD_POULE_DRAW', payload: {name: this.team[0].name, goals: homeScore} });
       this.store.dispatch({ type: 'ADD_POULE_DRAW', payload: {name: this.team[1].name, goals: homeScore} });
     } else {
-      this.store.dispatch({ type: 'ADD_POULE_WIN', payload: {name: winner, goals: goals, goals_against: goals_against} });
-      this.store.dispatch({ type: 'ADD_POULE_LOSS', payload: {name: loser, goals: goals, goals_against: goals_against} });
+      this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: this.team[0].name, goals: playerOne.goals, goals_against: playerOne.goals_against, win: playerOne.win} });
+      this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: this.team[1].name, goals: playerTwo.goals, goals_against: playerTwo.goals_against, win: playerTwo.win} });
     }
   }
 

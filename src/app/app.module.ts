@@ -27,6 +27,7 @@ import { Tabs } from './common/tabs/tabs.component';
 import { Tab } from './common/tabs/tab/tab.component';
 import { GameComponent } from './tournament/games/game/game.component';
 import { NgPipesModule } from 'ngx-pipes';
+import { ClubService } from './services/club.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -69,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
   ],
-  providers: [DeviceService],
+  providers: [DeviceService, ClubService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

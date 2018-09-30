@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { State } from "../../common/reducers";
+import { ClubService } from "../../services/club.service";
 
 @Component({
   selector: 'app-games',
@@ -11,12 +10,8 @@ export class GamesComponent implements OnInit {
   @Input() poules: Array<any> = [];
 
   matches: any = {};
-  clubs: Array<string> = [];
 
-  constructor(private store: Store<State>) {
-    this.store.select('clubs').subscribe((v) => {
-      this.clubs = v.clubs;
-    })
+  constructor(private clubService: ClubService) {
   }
 
   ngOnInit() {
@@ -37,18 +32,11 @@ export class GamesComponent implements OnInit {
     const result = [];
     for (let i = 0; i < poule.length; i++) {
       for (let j = i + 1; j < poule.length; j++) {
-        result.push([{name: poule[i].name, club: this.getClub()}, {name: poule[j].name, club: this.getClub()}]);
+        result.push([{name: poule[i].name, club: this.clubService.getClub()}, {name: poule[j].name, club: this.clubService.getClub()}]);
       }
     }
 
     return result;
-  }
-
-  getClub(): string {
-    let clubs = this.clubs.sort(() => { return 0.5 - Math.random() });
-    let rand = Math.round(Math.random() * this.clubs.length);
-    console.log(rand);
-    return clubs[rand];
   }
 
 }

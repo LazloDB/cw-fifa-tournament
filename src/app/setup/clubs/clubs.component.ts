@@ -34,7 +34,7 @@ export class ClubsComponent implements OnInit {
   }
 
   addTopTeams() {
-    const topTeams = ['Arsenal', 'Atletico Madrid', 'Barcelona', 'Bayern München', 'Chelsea', 'Juventus', 'Liverpool', 'Manchester City', 'Manchester United', 'PSG'];
+    const topTeams = ['Arsenal', 'Atletico Madrid', 'Barcelona', 'Bayern München', 'Chelsea', 'Juventus', 'Liverpool', 'Manchester City', 'Manchester United', 'PSG', 'Real Madrid'];
 
     this.store.dispatch({ type: 'SET_CLUBS', payload: topTeams });
   }
