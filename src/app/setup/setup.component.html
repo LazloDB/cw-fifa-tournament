@@ -2,6 +2,6 @@
   <app-people [people]="people" *ngIf="stage == 0"></app-people>
   <app-clubs *ngIf="stage == 1"></app-clubs>
   <app-match-type *ngIf="stage == 2" (setType)="setType.emit($event)"></app-match-type>
-  <div class="next" (click)="next()" *ngIf="stage < 2 && people.length > 2">></div>
+  <div class="next" (click)="next()" *ngIf="stage < 2 && people.length > 2"><i class="fas fa-chevron-right"></i></div>
 </div>
 <app-progress [stage]="stage" [playerCount]="people.length" (setStage)="setStage($event)" *ngIf="stage < 3"></app-progress>
