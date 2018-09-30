@@ -13,7 +13,7 @@ export function poules(state: any, action: Action) {
             ...state,
             poules: state.poules.map(
               (poule) => poule.map(
-                (v: player) => v.name === action.payload.name ? {...v, points: action.payload.win ? v.points + 3 : v.points, played: v.played + 1, wins: action.payload.win ? v.wins + 1 : v.wins, losses: !action.payload.win ? v.losses + 1 : v.losses, goals: v.goals + action.payload.goals, goals_against: v.goals_against + action.payload.goals_against, goal_difference: v.goals - v.goals_against} : v
+                (v: player) => v.name === action.payload.name ? {...v, points: action.payload.win ? v.points + 3 : v.points, played: v.played + 1, wins: action.payload.win ? v.wins + 1 : v.wins, losses: !action.payload.win ? v.losses + 1 : v.losses, goals: v.goals + action.payload.goals, goals_against: v.goals_against + action.payload.goals_against, goal_difference: v.goal_difference + (action.payload.goals - action.payload.goals_against)} : v
               )
             )
           }
