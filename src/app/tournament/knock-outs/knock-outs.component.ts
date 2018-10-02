@@ -10,11 +10,13 @@ export class KnockOutsComponent implements OnInit {
   @Input() players: Array<any>;
 
   matches: any = [];
+  winners: any = [];
+  currentFree: Array<string> = [];
 
   constructor(private clubService: ClubService) { }
 
   ngOnInit() {
-    this.matches = this.createMatches(this.players);
+    this.matches.push(this.createMatches(this.players));
   }
 
   createMatches(players): any {
@@ -35,11 +37,18 @@ export class KnockOutsComponent implements OnInit {
         }
 
         matchUp.games.push(tempMatch);
+        this.currentFree = [];
       } else {
         matchUp.free.push(players.splice(0,1));
+        this.currentFree = matchUp.free;
       }
     }
 
     return matchUp;
+  }
+
+  setNextRound(players: Array<string>): void {
+    players = players.concat(this.currentFree);
+    this.matches.push(this.createMatches(players));
   }
 }

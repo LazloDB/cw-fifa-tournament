@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { ClubService } from "../../services/club.service";
+import { Store } from "@ngrx/store";
+import { State } from "../../common/reducers";
 
 @Component({
   selector: 'app-games',
@@ -9,10 +11,13 @@ import { ClubService } from "../../services/club.service";
 export class GamesComponent implements OnInit {
   @Input() matchUp: Array<any> = [];
   @Input() type: string = '';
+  @Output() finish = new EventEmitter();
 
   matches: any = {};
+  counter: number = 0;
+  winners: Array<string> = [];
 
-  constructor(private clubService: ClubService) {
+  constructor(private clubService: ClubService, private store: Store<State>) {
   }
 
   ngOnInit() {
@@ -50,6 +55,35 @@ export class GamesComponent implements OnInit {
     } else {
       return result;
     }
+  }
+
+  handleGames(data: any) {
+    this.counter++;
+
+    if (this.type == 'poules') this.setPoints(data);
+
+    if (this.type == 'knock-outs') this.setWinners(data);
+
+    if (this.counter === this.matches.length) {
+      this.finish.emit(this.winners);
+    }
+  }
+
+  setPoints(data: any) {
+    let playerOne = {win: data.homeScore > data.awayScore, goals: data.homeScore, goals_against: data.awayScore};
+    let playerTwo = {win: data.awayScore > data.homeScore, goals: data.awayScore, goals_against: data.homeScore};
+
+    if (data.homeScore === data.awayScore) {
+      this.store.dispatch({ type: 'ADD_POULE_DRAW', payload: {name: data.homePlayer, goals: data.homeScore} });
+      this.store.dispatch({ type: 'ADD_POULE_DRAW', payload: {name: data.awayPlayer, goals: data.homeScore} });
+    } else {
+      this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: data.homePlayer, goals: playerOne.goals, goals_against: playerOne.goals_against, win: playerOne.win} });
+      this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: data.awayPlayer, goals: playerTwo.goals, goals_against: playerTwo.goals_against, win: playerTwo.win} });
+    }
+  }
+
+  setWinners(data: any) {
+    data.homeScore > data.awayScore ? this.winners.push(data.homePlayer) : this.winners.push(data.awayPlayer);
   }
 
 }

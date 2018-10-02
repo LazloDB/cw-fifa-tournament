@@ -1,5 +1,5 @@
 <div>
   <!-- <div *ngFor="let match of matches"> -->
-    <app-game *ngFor="let team of matches" [team]="team" [type]="type"></app-game>
+    <app-game *ngFor="let team of matches" [team]="team" [type]="type" (finish)="handleGames($event)"></app-game>
   <!-- </div> -->
 </div>

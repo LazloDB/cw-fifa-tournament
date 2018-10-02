@@ -1,4 +1,6 @@
 <div class="ko-container">
-  <app-games [matchUp]="matches.games" [type]="'knock-outs'"></app-games>
-  <div class="free">{{matches.free}}</div>
+  <div *ngFor="let match of matches">
+    <app-games [matchUp]="match.games" [type]="'knock-outs'" (finish)="setNextRound($event)"></app-games>
+    <div class="free">{{match.free}}</div>
+  </div>
 </div>
