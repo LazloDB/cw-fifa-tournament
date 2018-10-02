@@ -7,7 +7,8 @@ import { ClubService } from "../../services/club.service";
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  @Input() poules: Array<any> = [];
+  @Input() matchUp: Array<any> = [];
+  @Input() type: string = '';
 
   matches: any = {};
 
@@ -15,17 +16,17 @@ export class GamesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.matches = this.createScheme(this.poules);
+    this.matches = this.type == 'poules' ? this.createScheme(this.matchUp) : this.matchUp;
   }
 
   createScheme(poules) {
-    let tempPoules = [];
+    let tempMatches = [];
 
     poules.forEach((poule) => {
-      tempPoules = tempPoules.concat(this.createMatches(poule));
+      tempMatches = tempMatches.concat(this.createMatches(poule));
     });
 
-    return tempPoules;
+    return tempMatches;
   }
 
   createMatches(poule) {

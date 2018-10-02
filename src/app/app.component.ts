@@ -28,8 +28,6 @@ export class AppComponent {
   setType(type: string) {
     if (type == 'poules') {
       this.createPoules(this.players);
-    } else if (type == 'knock-outs') {
-      this.createKnockOuts(this.players);
     }
 
     this.type = type;
@@ -74,9 +72,5 @@ export class AppComponent {
       draws: 0,
       losses: 0,
     }
-  }
-
-  createKnockOuts(players: Array<string>): void {
-
   }
 }

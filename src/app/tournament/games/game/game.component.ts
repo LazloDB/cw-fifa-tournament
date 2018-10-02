@@ -9,6 +9,7 @@ import { State } from "../../../common/reducers";
 })
 export class GameComponent {
   @Input() team: Array<any> = [];
+  @Input() type: string = '';
 
   homeScore = '';
   awayScore = '';
