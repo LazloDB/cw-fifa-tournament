@@ -1,10 +1,14 @@
 .game-wrapper {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+}
+
+.game-wrapper > div {
+  text-align: center;
+  margin: auto;
 }
 
 input[type=text] {
   max-width: 40px;
   border-radius: 0.2em;
-
 }

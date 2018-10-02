@@ -1,0 +1,3 @@
+app-game:not(:last-child) .game-wrapper {
+  margin-bottom: 10px;
+}

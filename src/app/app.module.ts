@@ -17,17 +17,19 @@ import { PeopleComponent } from './setup/people/people.component';
 import { ProgressComponent } from './setup/progress/progress.component';
 import { ClubsComponent } from './setup/clubs/clubs.component';
 import { MatchTypeComponent } from './setup/match-type/match-type.component';
-import { TournamentComponent } from './tournament/tournament.component';
+import { PoulesComponent } from './tournament/poules/poules.component';
 import { StandingsComponent } from './tournament/standings/standings.component';
-
-// services
-import { DeviceService } from './services/device.service';
+import { KnockOutsComponent } from './tournament/knock-outs/knock-outs.component';
 import { GamesComponent } from './tournament/games/games.component';
 import { Tabs } from './common/tabs/tabs.component';
 import { Tab } from './common/tabs/tab/tab.component';
 import { GameComponent } from './tournament/games/game/game.component';
-import { NgPipesModule } from 'ngx-pipes';
+
+// services
+import { DeviceService } from './services/device.service';
 import { ClubService } from './services/club.service';
+
+import { NgPipesModule } from 'ngx-pipes';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,12 +44,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProgressComponent,
     ClubsComponent,
     MatchTypeComponent,
-    TournamentComponent,
+    PoulesComponent,
     StandingsComponent,
     GamesComponent,
     GameComponent,
     Tabs,
-    Tab
+    Tab,
+    KnockOutsComponent,
   ],
   imports: [
     BrowserModule,
