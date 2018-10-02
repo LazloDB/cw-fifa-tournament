@@ -17,8 +17,8 @@ export class KnockOutsComponent implements OnInit {
     this.matches = this.createMatches(this.players);
   }
 
-  createMatches(players): Array<any> {
-    let matchUp = [];
+  createMatches(players): any {
+    let matchUp = {games: [], free: []};
     let tempMatch = [];
 
     while (players.length > 0) {
@@ -33,11 +33,11 @@ export class KnockOutsComponent implements OnInit {
           let index = players.length > 1 ? Math.round(Math.random() * (players.length - 1)) : 0;
           tempMatch.push({name: players.splice(index, 1), club: this.clubService.getClub()});
         }
-      } else {
-        tempMatch = players.splice(0,1);
-      }
 
-      matchUp.push(tempMatch);
+        matchUp.games.push(tempMatch);
+      } else {
+        matchUp.free.push(players.splice(0,1));
+      }
     }
 
     return matchUp;

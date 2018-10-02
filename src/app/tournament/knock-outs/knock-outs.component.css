@@ -9,3 +9,9 @@
   background-color: white;
   box-shadow: 0 4px 10px 4px #13232f13;
 }
+
+.free {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+}
