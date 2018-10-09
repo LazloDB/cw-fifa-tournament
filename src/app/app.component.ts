@@ -40,7 +40,7 @@ export class AppComponent {
     if (players.length < 6) {
       players = players.sort(() => { return 0.5 - Math.random() });
       this.store.dispatch({ type: 'ADD_POULES', payload: [players.map((v) => this.createPlayer(v))] });
-    } else if (players.length >= 6 && players.length < 10) {
+    } else if (players.length >= 6 && players.length < 11) {
       let pouleA = [];
       let pouleB = [];
 

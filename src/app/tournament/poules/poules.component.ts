@@ -10,4 +10,7 @@ export class PoulesComponent {
 
   constructor() { }
 
+  handleGames(e) {
+    console.log('ready');
+  }
 }

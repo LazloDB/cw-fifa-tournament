@@ -1,6 +1,6 @@
 <app-tabs>
     <app-tab tabTitle="Games" class="no-pd-bt">
-        <app-games [matchUp]="poules" [type]="'poules'"></app-games>
+        <app-games [matchUp]="poules" [type]="'poules'" (finish)="handleGames($event)"></app-games>
     </app-tab>
     <app-tab tabTitle="Standings">
         <app-standings [poules]="poules"></app-standings>
