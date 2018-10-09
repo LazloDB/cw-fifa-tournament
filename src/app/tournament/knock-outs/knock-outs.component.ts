@@ -19,20 +19,20 @@ export class KnockOutsComponent implements OnInit {
     this.matches.push(this.createMatches(this.players));
   }
 
-  createMatches(players): any {
-    let matchUp = {games: [], free: []};
+  createMatches(players, random = true): any {
+    let matchUp = { games: [], free: [] };
     let tempMatch = [];
 
     while (players.length > 0) {
       tempMatch = [];
 
-      // always resort the array before splicing
-      players = players.sort(() => { return 0.5 - Math.random()});
+      // always resort the array before splicing if random is true
+      if (random) players = players.sort(() => { return 0.5 - Math.random()});
 
       if (players.length > 1) {
         for (let index = 0; index < 2; index++) {
-          // get index of random player
-          let index = players.length > 1 ? Math.round(Math.random() * (players.length - 1)) : 0;
+          // get index of random player when random = true
+          let index = random ? players.length > 1 ? Math.round(Math.random() * (players.length - 1)) : 0 : 0;
           tempMatch.push({name: players.splice(index, 1), club: this.clubService.getClub()});
         }
 
@@ -49,6 +49,6 @@ export class KnockOutsComponent implements OnInit {
 
   setNextRound(players: Array<string>): void {
     players = players.concat(this.currentFree);
-    this.matches.push(this.createMatches(players));
+    this.matches.push(this.createMatches(players, false));
   }
 }

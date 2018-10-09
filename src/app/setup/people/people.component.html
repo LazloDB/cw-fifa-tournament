@@ -3,7 +3,7 @@
     <div *ngFor="let person of people" class="person">{{person}} <i class="fas fa-times" (click)="remove(person)"></i></div>
   </div>
   <div class="inputs">
-    <input type="text" [(ngModel)]="playerName">
+    <input type="text" [(ngModel)]="playerName" autofocus>
     <input type="button" value="add" (click)="addPerson()">
   </div>
 </div>
