@@ -10,6 +10,11 @@
   box-shadow: 0 4px 10px 4px #13232f13;
 }
 
+.in-tab {
+  padding: 0;
+  box-shadow: unset;
+}
+
 .free {
   width: 100%;
   text-align: center;

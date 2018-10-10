@@ -8,6 +8,7 @@ import { ClubService } from '../../services/club.service';
 })
 export class KnockOutsComponent implements OnInit {
   @Input() players: Array<any>;
+  @Input() inTab: boolean = false;
 
   koPlayers: Array<any> = [];
 

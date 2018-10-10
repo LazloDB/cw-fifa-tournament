@@ -1,4 +1,4 @@
-<div class="ko-container">
+<div class="ko-container" [ngClass]="inTab ? 'in-tab' : ''">
   <div *ngFor="let match of matches">
     <div class="free" *ngIf="match.free.length > 0">Free: {{match.free}}</div>
     <app-games [matchUp]="match.games" [type]="'knock-outs'" (finish)="setNextRound($event)"></app-games>
