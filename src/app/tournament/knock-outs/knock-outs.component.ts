@@ -12,6 +12,7 @@ export class KnockOutsComponent implements OnInit {
   matches: any = [];
   winners: any = [];
   currentFree: Array<string> = [];
+  gameWinner: string = '';
 
   constructor(private clubService: ClubService) { }
 
@@ -48,7 +49,12 @@ export class KnockOutsComponent implements OnInit {
   }
 
   setNextRound(players: Array<string>): void {
-    players = players.concat(this.currentFree);
-    this.matches.push(this.createMatches(players, false));
+    players = this.currentFree.concat(players);
+
+    players.length > 1 ? this.matches.push(this.createMatches(players, false)) : this.setWinner(players[0]);
+  }
+
+  setWinner(player) {
+    this.gameWinner = player;
   }
 }
