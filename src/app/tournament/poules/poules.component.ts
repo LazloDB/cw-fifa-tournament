@@ -7,11 +7,19 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PoulesComponent {
   @Input() poules: Array<any>;
-  @Output() finish = new EventEmitter();
+
+  koPlayers: Array<any> = [];
 
   constructor() { }
 
-  handleGames(e) {
-    this.finish.emit();
+  finishPoules() {
+    if (this.poules.length == 2) {
+      let isShort: boolean = (this.poules[0].length == 3 && this.poules[1].length == 3);
+
+      this.poules.forEach((v) => {
+        this.koPlayers.push(v[0].name);
+        if (!isShort) this.koPlayers.push(v[1].name);
+      });
+    }
   }
 }

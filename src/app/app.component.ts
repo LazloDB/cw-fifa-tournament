@@ -27,14 +27,17 @@ export class AppComponent {
 
   setType(type: string) {
     if (type == 'poules') {
-      this.createPoules(this.players);
+      this.createPoules();
     }
 
     this.type = type;
     this.isSetup = true;
   }
 
-  createPoules(players: Array<string>): void {
+  createPoules(): void {
+    let players = [];
+    players = players.concat(this.players);
+
     const playerCount = players.length;
 
     if (players.length < 6) {

@@ -9,6 +9,8 @@ import { ClubService } from '../../services/club.service';
 export class KnockOutsComponent implements OnInit {
   @Input() players: Array<any>;
 
+  koPlayers: Array<any> = [];
+
   matches: any = [];
   winners: any = [];
   currentFree: Array<string> = [];
@@ -17,7 +19,8 @@ export class KnockOutsComponent implements OnInit {
   constructor(private clubService: ClubService) { }
 
   ngOnInit() {
-    this.matches.push(this.createMatches(this.players));
+    this.koPlayers = this.koPlayers.concat(this.players);
+    this.matches.push(this.createMatches(this.koPlayers));
   }
 
   createMatches(players, random = true): any {

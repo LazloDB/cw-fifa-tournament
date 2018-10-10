@@ -1,8 +1,11 @@
 <app-tabs>
     <app-tab tabTitle="Games" class="no-pd-bt">
-        <app-games [matchUp]="poules" [type]="'poules'" (finish)="handleGames($event)"></app-games>
+        <app-games [matchUp]="poules" [type]="'poules'" (finish)="finishPoules($event)"></app-games>
     </app-tab>
     <app-tab tabTitle="Standings">
         <app-standings [poules]="poules"></app-standings>
+    </app-tab>
+    <app-tab tabTitle="Knockouts" *ngIf="koPlayers.length > 0">
+        <app-knock-outs [players]="koPlayers"></app-knock-outs>
     </app-tab>
 </app-tabs>
