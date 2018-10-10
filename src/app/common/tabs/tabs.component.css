@@ -35,6 +35,6 @@ li.active::before {
   border-right: .5px solid #dbdbdb;
 }
 
-li:nth-child(2) {
+/* li:nth-child(2) {
   margin-left: -10px;
-}
+} */
