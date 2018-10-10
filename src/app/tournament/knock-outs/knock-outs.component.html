@@ -1,6 +1,6 @@
 <div class="ko-container">
   <div *ngFor="let match of matches">
-    <div class="free">Free: {{match.free}}</div>
+    <div class="free" *ngIf="match.free.length > 0">Free: {{match.free}}</div>
     <app-games [matchUp]="match.games" [type]="'knock-outs'" (finish)="setNextRound($event)"></app-games>
   </div>
   <div *ngIf="gameWinner !== ''">Winner: {{gameWinner}}</div>

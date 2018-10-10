@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-poules',
@@ -7,10 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class PoulesComponent {
   @Input() poules: Array<any>;
+  @Output() finish = new EventEmitter();
 
   constructor() { }
 
   handleGames(e) {
-    console.log('ready');
+    this.finish.emit();
   }
 }
