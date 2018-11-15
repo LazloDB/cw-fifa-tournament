@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../common/reducers';
 
@@ -10,6 +10,13 @@ import { State } from '../../common/reducers';
 export class PeopleComponent {
   @Input() people: Array<string> = [];
   playerName: string = "";
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key == 'Enter' && this.playerName.trim() !== '') {
+      this.addPerson();
+    }
+  }
 
 
   constructor(private store: Store<State>) {

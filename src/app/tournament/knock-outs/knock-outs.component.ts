@@ -21,7 +21,7 @@ export class KnockOutsComponent implements OnInit {
 
   ngOnInit() {
     this.koPlayers = this.koPlayers.concat(this.players);
-    this.matches.push(this.createMatches(this.koPlayers));
+    this.matches.push(this.createMatches(this.koPlayers, !this.inTab));
   }
 
   createMatches(players, random = true): any {

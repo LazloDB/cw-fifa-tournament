@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../common/reducers';
 
@@ -10,6 +10,13 @@ import { State } from '../../common/reducers';
 export class ClubsComponent implements OnInit {
   clubs: Array<string> = [];
   clubName: string = "";
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key == 'Enter' && this.clubName.trim() !== '') {
+      this.addClub();
+    }
+  }
 
 
   constructor(private store: Store<State>) {
