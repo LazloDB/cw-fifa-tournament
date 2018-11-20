@@ -62,7 +62,8 @@ export class KnockOutsComponent implements OnInit {
     let matchUp = { games: [], free: [] };
     let tempMatch = [];
 
-    for (let index = 0; index < koPlayers.length; index++) {
+    // TODO: make more performant
+    for (let index = 0; index < koPlayers[0].players.length; index++) {
       tempMatch = [];
 
       tempMatch.push({
