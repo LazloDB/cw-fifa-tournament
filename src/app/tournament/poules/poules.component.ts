@@ -13,11 +13,13 @@ export class PoulesComponent {
   constructor() { }
 
   finishPoules(x: any) {
-    console.log(x);
     if (this.poules.length == 2) {
       let isShort: boolean = (this.poules[0].length == 3 && this.poules[1].length == 3);
 
       this.poules.forEach((v) => {
+        v.sort((a,b) => b.points - a.points);
+        console.log(v);
+
         this.koPlayers.push(v[0].name);
         if (!isShort) this.koPlayers.push(v[1].name);
       });
