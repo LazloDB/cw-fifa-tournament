@@ -74,11 +74,9 @@ export class GamesComponent implements OnInit {
       let newResult = [];
 
       result.forEach((v, key) => {
-        newResult.push({game: key, match: v});
+        newResult.push({game: key + 1, match: v});
       });
 
-      console.log(result);
-      console.log(newResult);
       return newResult;
     }
   }
@@ -105,8 +103,6 @@ export class GamesComponent implements OnInit {
     } else {
       this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: data.homePlayer, goals: playerOne.goals, goals_against: playerOne.goals_against, win: playerOne.win} });
       this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: data.awayPlayer, goals: playerTwo.goals, goals_against: playerTwo.goals_against, win: playerTwo.win} });
-
-      console.log(this.matchUp);
     }
   }
 
