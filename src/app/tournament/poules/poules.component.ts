@@ -12,7 +12,8 @@ export class PoulesComponent {
 
   constructor() { }
 
-  finishPoules() {
+  finishPoules(x: any) {
+    console.log(x);
     if (this.poules.length == 2) {
       let isShort: boolean = (this.poules[0].length == 3 && this.poules[1].length == 3);
 

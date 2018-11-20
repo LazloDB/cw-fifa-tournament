@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../common/reducers';
 
@@ -7,7 +7,7 @@ import { State } from '../../common/reducers';
   templateUrl: './clubs.component.html',
   styleUrls: ['./clubs.component.css']
 })
-export class ClubsComponent implements OnInit {
+export class ClubsComponent {
   clubs: Array<string> = [];
   clubName: string = "";
 
@@ -25,9 +25,6 @@ export class ClubsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   addClub(): void {
     if (this.clubs.indexOf(this.clubName) < 0 && this.clubName.trim() !== '') {
       this.store.dispatch({ type: 'ADD_CLUB', payload: this.clubName });
@@ -40,13 +37,13 @@ export class ClubsComponent implements OnInit {
     this.store.dispatch({ type: 'REMOVE_CLUB', payload: club });
   }
 
-  addTopTeams() {
+  addTopTeams(): void {
     const topTeams = ['Arsenal', 'Atletico Madrid', 'Barcelona', 'Bayern München', 'Chelsea', 'Juventus', 'Liverpool', 'Manchester City', 'Manchester United', 'PSG', 'Real Madrid'];
 
     this.store.dispatch({ type: 'SET_CLUBS', payload: topTeams });
   }
 
-  addNationalTeams() {
+  addNationalTeams(): void {
     const nationalTeams = ['Argentina', 'Australia', 'Austria', 'Belgium', 'Brazil', 'Chile', 'China', 'Colombia', 'Denmark', 'England', 'France', 'Germany', 'Netherlands', 'Italy', 'Japan', 'Korea', 'Mexico', 'Norway', 'Poland', 'Portugal', 'Rep. Ireland', 'Saudi Arabia', 'Scotland', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'USA / Canada'];
 
     this.store.dispatch({ type: 'SET_CLUBS', payload: nationalTeams });

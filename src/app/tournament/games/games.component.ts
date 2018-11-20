@@ -31,6 +31,8 @@ export class GamesComponent implements OnInit {
       tempMatches = tempMatches.concat(this.createMatches(poule));
     });
 
+    if (poules.length > 1) tempMatches.sort((a, b) => a.game - b.game);
+
     return tempMatches;
   }
 
@@ -49,11 +51,35 @@ export class GamesComponent implements OnInit {
 
   sortPoule(result, length): Array<any> {
     if (length === 4) {
-      return [result[0], result[5], result[1], result[4], result[2], result[3]];
+      return [
+        {game: 1, match: result[0]},
+        {game: 2, match: result[5]},
+        {game: 3, match: result[1]},
+        {game: 4, match: result[4]},
+        {game: 5, match: result[2]},
+        {game: 6, match: result[3]}];
     } else if (length === 5) {
-      return [result[0], result[7], result[3], result[4], result[9], result[1], result[5], result[8], result[2], result[6]];
+      return [
+        {game: 1, match: result[0]},
+        {game: 2, match: result[7]},
+        {game: 3, match: result[3]},
+        {game: 4, match: result[4]},
+        {game: 5, match: result[9]},
+        {game: 6, match: result[1]},
+        {game: 7, match: result[5]},
+        {game: 8, match: result[8]},
+        {game: 9, match: result[2]},
+        {game: 10, match: result[6]}];
     } else {
-      return result;
+      let newResult = [];
+
+      result.forEach((v, key) => {
+        newResult.push({game: key, match: v});
+      });
+
+      console.log(result);
+      console.log(newResult);
+      return newResult;
     }
   }
 
@@ -79,6 +105,8 @@ export class GamesComponent implements OnInit {
     } else {
       this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: data.homePlayer, goals: playerOne.goals, goals_against: playerOne.goals_against, win: playerOne.win} });
       this.store.dispatch({ type: 'ADD_POULE_MATCH', payload: {name: data.awayPlayer, goals: playerTwo.goals, goals_against: playerTwo.goals_against, win: playerTwo.win} });
+
+      console.log(this.matchUp);
     }
   }
 

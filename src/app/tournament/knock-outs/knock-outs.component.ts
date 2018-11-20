@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ClubService } from '../../services/club.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { ClubService } from "../../services/club.service";
 
 @Component({
-  selector: 'app-knock-outs',
-  templateUrl: './knock-outs.component.html',
-  styleUrls: ['./knock-outs.component.css']
+  selector: "app-knock-outs",
+  templateUrl: "./knock-outs.component.html",
+  styleUrls: ["./knock-outs.component.css"]
 })
 export class KnockOutsComponent implements OnInit {
   @Input() players: Array<any>;
@@ -15,9 +15,9 @@ export class KnockOutsComponent implements OnInit {
   matches: any = [];
   winners: any = [];
   currentFree: Array<string> = [];
-  gameWinner: string = '';
+  gameWinner: string = "";
 
-  constructor(private clubService: ClubService) { }
+  constructor(private clubService: ClubService) {}
 
   ngOnInit() {
     this.koPlayers = this.koPlayers.concat(this.players);
@@ -32,19 +32,25 @@ export class KnockOutsComponent implements OnInit {
       tempMatch = [];
 
       // always resort the array before splicing if random is true
-      if (random) players = players.sort(() => { return 0.5 - Math.random()});
+      if (random)
+        players = players.sort(() => {
+          return 0.5 - Math.random();
+        });
 
       if (players.length > 1) {
         for (let index = 0; index < 2; index++) {
           // get index of random player when random = true
-          let index = random ? players.length > 1 ? Math.round(Math.random() * (players.length - 1)) : 0 : 0;
-          tempMatch.push({name: players.splice(index, 1), club: this.clubService.getClub()});
+          let position = random && players.length > 1 ? Math.round(Math.random() * (players.length - 1)) : 0;
+          tempMatch.push({
+            name: players.splice(position, 1),
+            club: this.clubService.getClub()
+          });
         }
 
-        matchUp.games.push(tempMatch);
+        matchUp.games.push({match: tempMatch});
         this.currentFree = [];
       } else {
-        matchUp.free.push(players.splice(0,1));
+        matchUp.free.push(players.splice(0, 1));
         this.currentFree = matchUp.free;
       }
     }
