@@ -16,12 +16,14 @@ export class PoulesComponent {
     if (this.poules.length == 2) {
       let isShort: boolean = (this.poules[0].length == 3 && this.poules[1].length == 3);
 
-      this.poules.forEach((v) => {
+      this.poules.forEach((v, key) => {
         v.sort((a,b) => b.points - a.points);
-        console.log(v);
+        let pouleWinners = [];
 
-        this.koPlayers.push(v[0].name);
-        if (!isShort) this.koPlayers.push(v[1].name);
+        pouleWinners.push(v[0].name);
+        if (!isShort) pouleWinners.push(v[1].name);
+
+        this.koPlayers.push({poule: key, players: pouleWinners});
       });
     }
   }

@@ -21,10 +21,10 @@ export class KnockOutsComponent implements OnInit {
 
   ngOnInit() {
     this.koPlayers = this.koPlayers.concat(this.players);
-    this.matches.push(this.createMatches(this.koPlayers, !this.inTab));
+    this.matches.push(this.inTab ? this.createMatchesFromPoules(this.koPlayers) : this.createMatchesFromScratch(this.koPlayers));
   }
 
-  createMatches(players, random = true): any {
+  createMatchesFromScratch(players, random = true): any {
     let matchUp = { games: [], free: [] };
     let tempMatch = [];
 
@@ -58,10 +58,33 @@ export class KnockOutsComponent implements OnInit {
     return matchUp;
   }
 
+  createMatchesFromPoules(koPlayers: any) {
+    let matchUp = { games: [], free: [] };
+    let tempMatch = [];
+
+    for (let index = 0; index < koPlayers.length; index++) {
+      tempMatch = [];
+
+      tempMatch.push({
+        name: koPlayers[0].players.splice(0, 1),
+        club: this.clubService.getClub()
+      });
+
+      tempMatch.push({
+        name: koPlayers[1].players.splice(koPlayers[1].players.length - 1, 1),
+        club: this.clubService.getClub()
+      });
+
+      matchUp.games.push({match: tempMatch});
+    }
+
+    return matchUp;
+  }
+
   setNextRound(players: Array<string>): void {
     players = this.currentFree.concat(players);
 
-    players.length > 1 ? this.matches.push(this.createMatches(players, false)) : this.setWinner(players[0]);
+    players.length > 1 ? this.matches.push(this.createMatchesFromScratch(players, false)) : this.setWinner(players[0]);
   }
 
   setWinner(player) {
